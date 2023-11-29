@@ -45,4 +45,12 @@ public enum Rank {
     public long multiplePrize(final int multiple) {
         return (long) prize * multiple;
     }
+
+    public int getCount() {
+        return count;
+    }
+
+    public int getPrize() {
+        return prize;
+    }
 }
