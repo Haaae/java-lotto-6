@@ -2,7 +2,7 @@ package lotto.view;
 
 public enum Notice {
 
-    NOTICE_WELCOME("안녕하세요!"),
+    NOTICE_PURCHASE_PRICE("구입금액을 입력해 주세요.\n로또 한장은 1,000원이며, 구매금액은 1,000원 단위로 입력할 수 있습니다."),
 
     ;
 
