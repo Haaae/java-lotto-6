@@ -22,4 +22,13 @@ public class Lotto {
         return this.numbers;
     }
 
+    public int calculateMatchCount(final Lotto other) {
+        return (int) numbers.stream()
+                .filter(other::contains)
+                .count();
+    }
+
+    public boolean contains(final int number) {
+        return numbers.contains(number);
+    }
 }
