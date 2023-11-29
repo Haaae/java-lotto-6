@@ -47,9 +47,9 @@ public class LottoService {
 
     public Long createBonusNumber(final int bonusNumber) {
         Lotto winningNumbers = getWinningNumbers();
-
-        BonusNumber savedBonusNumber = bonusRepository.save(new BonusNumber(bonusNumber, winningNumbers));
-        return savedBonusNumber.getId();
+        BonusNumber bonus = new BonusNumber(bonusNumber, winningNumbers);
+        bonusRepository.save(bonus);
+        return bonus.getId();
     }
 
     public Result getResult(final Long bonusNumberId) {
