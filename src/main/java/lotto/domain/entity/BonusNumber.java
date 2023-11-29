@@ -24,4 +24,8 @@ public class BonusNumber extends Entity {
     public Long getId() {
         return id;
     }
+
+    public int getNumber() {
+        return number;
+    }
 }
