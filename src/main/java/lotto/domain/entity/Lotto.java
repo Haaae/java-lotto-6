@@ -1,20 +1,25 @@
 package lotto.domain.entity;
 
 import java.util.List;
+import lotto.exception.ExceptionCode;
+import lotto.utils.validator.Validator;
 
 public class Lotto {
     private final List<Integer> numbers;
 
-    public Lotto(List<Integer> numbers) {
-        validate(numbers);
+    public Lotto(final List<Integer> numbers, final ExceptionCode e) {
+        validate(numbers, e);
         this.numbers = numbers;
     }
 
-    private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
-        }
+    private void validate(final List<Integer> numbers, ExceptionCode e) {
+        Validator.isOverSize(numbers, 6, e);
+        Validator.isDuplication(numbers, e);
+        numbers.forEach(number -> Validator.isValidRange(number, 45, 1, e));
     }
 
-    // TODO: 추가 기능 구현
+    public List<Integer> getNumbers() {
+        return this.numbers;
+    }
+
 }
