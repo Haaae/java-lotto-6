@@ -8,6 +8,15 @@ import lotto.domain.entity.Lotto;
 
 
 public class LottoRepository {
+    
+    private static final LottoRepository instance = new LottoRepository();
+
+        private LottoRepository() {
+        }
+
+        public static LottoRepository getInstance() {
+            return instance;
+        }
 
     private final List<Lotto> repository = new ArrayList<>();
     private Lotto winningNumbers;

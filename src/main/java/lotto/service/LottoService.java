@@ -14,18 +14,20 @@ import lotto.service.dto.LottoDto;
 import lotto.service.dto.Result;
 
 public class LottoService {
-
-    private final LottoGenerator lottoGenerator;
-    private final LottoManager lottoManager;
-    private final LottoRepository lottoRepository;
-    private final BonusRepository bonusRepository;
-
-    public LottoService(LottoGenerator lottoGenerator, LottoManager lottoManager, LottoRepository lottoRepository, BonusRepository bonusRepository) {
-        this.lottoGenerator = lottoGenerator;
-        this.lottoManager = lottoManager;
-        this.lottoRepository = lottoRepository;
-        this.bonusRepository = bonusRepository;
+    
+    private static final LottoService instance = new LottoService();
+    
+    private LottoService() {
     }
+    
+    public static LottoService getInstance() {
+        return instance;
+    }
+
+    private final LottoGenerator lottoGenerator = LottoGenerator.getInstance();
+    private final LottoManager lottoManager = LottoManager.getInstance();
+    private final LottoRepository lottoRepository = LottoRepository.getInstance();
+    private final BonusRepository bonusRepository = BonusRepository.getInstance();
 
     public void generateLottos(final long purchasePrice) {
         List<Lotto> lottos = lottoGenerator.generate(purchasePrice);

@@ -9,15 +9,19 @@ import lotto.view.InputView;
 import lotto.view.OutputView;
 
 public class LottoController {
-    private final InputView inputView;
-    private final OutputView outputView;
-    private final LottoService lottoService;
 
-    public LottoController(InputView inputView, OutputView outputView, LottoService lottoService) {
-        this.inputView = inputView;
-        this.outputView = outputView;
-        this.lottoService = lottoService;
+    private static final LottoController instance = new LottoController();
+
+    private LottoController() {
     }
+
+    public static LottoController getInstance() {
+        return instance;
+    }
+
+    private final InputView inputView = InputView.getInstance();
+    private final OutputView outputView = OutputView.getInstance();
+    private final LottoService lottoService = LottoService.getInstance();
 
     public void run() {
         ExceptionHandler.handle(this::generateLottosFromUserInput);

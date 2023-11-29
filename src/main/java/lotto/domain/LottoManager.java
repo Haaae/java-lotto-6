@@ -6,6 +6,16 @@ import lotto.domain.entity.Lotto;
 import lotto.service.dto.Result;
 
 public class LottoManager {
+
+    private static final LottoManager instance = new LottoManager();
+
+    private LottoManager() {
+    }
+
+    public static LottoManager getInstance() {
+        return instance;
+    }
+
     public Result createResult(final LottoBundle lottoBundle, final Lotto winningNumbers, final BonusNumber bonusNumber) {
         Map<Rank, Integer> result = lottoBundle.calculateRank(winningNumbers, bonusNumber);
         float revenueRate = lottoBundle.calculateRevenueRate(getTotalPrize(result));

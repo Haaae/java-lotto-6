@@ -9,6 +9,15 @@ import lotto.view.constant.Notice;
 import lotto.view.constant.Regex;
 
 public class InputView {
+    
+    private static final InputView instance = new InputView();
+    
+    private InputView() {
+    }
+    
+    public static InputView getInstance() {
+        return instance;
+    }
 
     public long readPurchasePrice() {
         Notice.NOTICE_PURCHASE_PRICE.print();
