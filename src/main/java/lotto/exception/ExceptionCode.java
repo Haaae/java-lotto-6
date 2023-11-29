@@ -4,6 +4,7 @@ import java.util.function.Function;
 
 public enum ExceptionCode {
     INVALID_PURCHASE_PRICE("[ERROR] 잘못된 구매금액입니다.", IllegalArgumentException::new),
+    INVALID_LOTTO_NUMBER("[ERROR] 잘못된 로또 번호입니다.", IllegalArgumentException::new),
 
 
     ;
