@@ -2,7 +2,7 @@ package lotto.view;
 
 public enum Format {
 
-    PRICE("%s원\n"),
+    COUNT_OF_LOTTO("%d개를 구매했습니다."),
     ;
 
     private final String format;
