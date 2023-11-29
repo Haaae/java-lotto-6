@@ -3,12 +3,14 @@ package lotto.repository;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 import lotto.domain.entity.Lotto;
 
 
 public class LottoRepository {
 
     private final List<Lotto> repository = new ArrayList<>();
+    private Lotto winningNumbers;
 
     public void save(final Lotto lotto) {
         repository.add(lotto);
@@ -16,6 +18,14 @@ public class LottoRepository {
 
     public void save(final List<Lotto> entities) {
         entities.forEach(this::save);
+    }
+
+    public void saveWinningNumbers(final Lotto winningNumbers) {
+        this.winningNumbers = winningNumbers;
+    }
+
+    public Optional<Lotto> findWinningNumbers() {
+        return Optional.ofNullable(winningNumbers);
     }
 
     public List<Lotto> finaAll() {
