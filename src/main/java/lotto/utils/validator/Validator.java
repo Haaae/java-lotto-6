@@ -81,6 +81,15 @@ public class Validator {
     }
 
     /**
+     * 특정 요소가 포함되어 있다면 예외가 발생. List.contains()를 사용한다.
+     */
+    public static <E> void notContains(final List<E> target, final E element, final ExceptionCode e) {
+        if (target.contains(element)) {
+            e.throwException();
+        }
+    }
+
+    /**
      * 리스트가 오직 특정한 요소들로 이루어져 있는지 확인. 만약 특정한 요소 외의 것이 포함되어 있다면 예외 발생.
      * @param target 검증할 리스트
      * @param validElements 유효한 요소 요소
@@ -160,6 +169,17 @@ public class Validator {
      */
     public static void contains(final String target, final String element, final ExceptionCode e) {
         contains(
+                converToList(target),
+                element,
+                e
+        );
+    }
+
+    /**
+     * 특정 문자가 포함되어 있지 않다면 예외가 발생. List.contains()를 사용한다.
+     */
+    public static void notContains(final String target, final String element, final ExceptionCode e) {
+        notContains(
                 converToList(target),
                 element,
                 e
