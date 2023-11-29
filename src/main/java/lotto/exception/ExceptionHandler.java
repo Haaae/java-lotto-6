@@ -26,7 +26,7 @@ public class ExceptionHandler {
         }
     }
 
-    public static <T> void handle(final Consumer<T> consumer, T t) {
+    public static <T> void handle(final Consumer<T> consumer, final T t) {
         try {
             consumer.accept(t);
         } catch (IllegalArgumentException e) {
@@ -35,7 +35,7 @@ public class ExceptionHandler {
         }
     }
 
-    public static <T, U> void handle(final BiConsumer<T, U> biConsumer, T t, U u) {
+    public static <T, U> void handle(final BiConsumer<T, U> biConsumer, final T t, final U u) {
         try {
             biConsumer.accept(t, u);
         } catch (IllegalArgumentException e) {
@@ -50,6 +50,15 @@ public class ExceptionHandler {
         } catch (IllegalArgumentException e) {
             printExceptionMessage(e);
             return handle(supplier);
+        }
+    }
+
+    public static void handle(final Runnable runnable) {
+        try {
+            runnable.run();
+        } catch (IllegalArgumentException e) {
+            printExceptionMessage(e);
+            handle(runnable);
         }
     }
 
