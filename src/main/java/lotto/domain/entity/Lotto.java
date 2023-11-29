@@ -7,8 +7,8 @@ import lotto.utils.validator.Validator;
 public class Lotto {
     private final List<Integer> numbers;
 
-    public Lotto(final List<Integer> numbers, final ExceptionCode e) {
-        validate(numbers, e);
+    public Lotto(final List<Integer> numbers) {
+        validate(numbers, ExceptionCode.INVALID_LOTTO_NUMBER);
         this.numbers = numbers;
     }
 
