@@ -2,6 +2,7 @@ package lotto.view;
 
 import java.util.List;
 import lotto.service.dto.LottoDto;
+import lotto.view.constant.Format;
 
 public class OutputView {
     public void printLottos(final List<LottoDto> lottoDtos) {
