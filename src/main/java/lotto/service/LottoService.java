@@ -1,6 +1,7 @@
 package lotto.service;
 
 import java.util.List;
+import lotto.domain.LottoBundle;
 import lotto.domain.LottoGenerator;
 import lotto.domain.LottoManager;
 import lotto.domain.entity.BonusNumber;
@@ -51,10 +52,10 @@ public class LottoService {
 
     public Result getResult(final Long bonusNumberId) {
         BonusNumber bonusNumber = Repository.findEntity(bonusRepository, bonusNumberId, ExceptionCode.NO_EXIST_ENTITY);
-        List<Lotto> lottos = lottoRepository.finaAll();
+        LottoBundle lottoBundle = new LottoBundle(lottoRepository.finaAll());
         Lotto winningNumbers = getWinningNumbers();
 
-        return lottoManager.createResult(lottos, winningNumbers, bonusNumber);
+        return lottoManager.createResult(lottoBundle, winningNumbers, bonusNumber);
     }
 
     private Lotto getWinningNumbers() {
