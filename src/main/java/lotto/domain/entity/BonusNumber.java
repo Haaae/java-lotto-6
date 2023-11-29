@@ -17,7 +17,7 @@ public class BonusNumber extends Entity {
 
     private void validate(final int number, final List<Integer> numbers, final ExceptionCode e) {
         Validator.notContains(numbers, number, e);
-        Validator.isValidRange(this.number, 45, 1, e);
+        Validator.isValidRange(number, 45, 1, e);
     }
 
     @Override
