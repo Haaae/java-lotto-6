@@ -6,15 +6,6 @@ import lotto.view.Regex;
 
 public class Validator {
 
-    private final static Validator instance = new Validator();
-
-    private Validator() {
-    }
-
-    public static Validator getInstance() {
-        return instance;
-    }
-
     /**
      * 0~9 중 하나로 이루어져 있지 않다면 예외 발생
      */
@@ -33,7 +24,7 @@ public class Validator {
                 .count();
 
         if (count != target.size()) {
-            ExceptionCode.EXAMPLE.throwException();
+            e.throwException();
         }
     }
 
@@ -209,6 +200,24 @@ public class Validator {
         return target.chars()
                 .mapToObj(String::valueOf)
                 .toList();
+    }
+
+    public static void isNoRemainder(final long molecule, final long denominator, final ExceptionCode e) {
+        if (denominator == 0 || molecule % denominator != 0) {
+            e.throwException();
+        }
+    }
+
+    public static void isNegative(final long number, final ExceptionCode e) {
+        if (number < 0) {
+            e.throwException();
+        }
+    }
+
+    public static void isNegative(final int number, final ExceptionCode e) {
+        if (number < 0) {
+            e.throwException();
+        }
     }
 }
 
