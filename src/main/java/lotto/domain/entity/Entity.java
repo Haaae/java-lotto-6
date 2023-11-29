@@ -1,4 +1,4 @@
-package lotto.entity;
+package lotto.domain.entity;
 
 public abstract class Entity {
 
