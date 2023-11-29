@@ -45,24 +45,34 @@ public class OutputView {
     }
 
     private void printCountPerRank(final Result result) {
-        printCountOfRank(Rank.FIRST, result.countOfFirst());
-        printCountOfRank(Rank.SECOND, result.countOfSecond());
-        printCountOfRank(Rank.THIRD, result.countOfThird());
-        printCountOfRank(Rank.FORTH, result.countOfForth());
         printCountOfRank(Rank.FIFTY, result.countOfFifty());
+        printCountOfRank(Rank.FORTH, result.countOfForth());
+        printCountOfRank(Rank.THIRD, result.countOfThird());
+        printCountOfSecondRank(result.countOfSecond());
+        printCountOfRank(Rank.FIRST, result.countOfFirst());
     }
 
-    private static void printCountOfRank(final Rank first, final int result) {
+    private void printCountOfRank(final Rank rank, final int count) {
         Format.COUNT_OF_RANK.print(
-                first.getCount(),
+                rank.getCount(),
                 Regex.formatCashPrize(
-                        first.getPrize()
+                        rank.getPrize()
                 ),
-                result
+                count
         );
     }
 
-    private static void printResultHead() {
+    private void printCountOfSecondRank(final int count) {
+        Format.COUNT_OF_SECOND.print(
+                Rank.SECOND.getCount(),
+                Regex.formatCashPrize(
+                        Rank.SECOND.getPrize()
+                ),
+                count
+        );
+    }
+
+    private void printResultHead() {
         System.out.println();
         Notice.NOTICE_RESULT.print();
         System.out.println(
