@@ -1,13 +1,13 @@
 package lotto.exception;
 
 import java.util.function.Function;
+import java.util.function.Supplier;
 
 public enum ExceptionCode {
     INVALID_PURCHASE_PRICE("[ERROR] 잘못된 구매금액입니다.", IllegalArgumentException::new),
-    INVALID_LOTTO_NUMBER("[ERROR] 잘못된 로또 번호입니다.", IllegalArgumentException::new),
-
-
-    ;
+    INVALID_LOTTO_NUMBER("[ERROR] 잘못된 당첨 번호입니다.", IllegalArgumentException::new),
+    INVALID_BONUS_NUMBER("[ERROR] 잘못된 보너스 번호입니다.", IllegalArgumentException::new),
+    NO_EXIST_ENTITY("[ERROR] 엔티티가 존재하지 않습니다.", IllegalArgumentException::new);
 
 
     private final String message;
@@ -32,5 +32,21 @@ public enum ExceptionCode {
      */
     public void throwException(Function<String, ? extends RuntimeException> constructorOfException) {
         throw constructorOfException.apply(message);
+    }
+
+    /**
+     *  Optional.orElseThrow()의 방식으로 예외를 발생시키기 위한 메서드
+     * @return 열거형의 메세지를 인자로 받는 예외 클래스 생성자를 Supplier 메서드 타입으로 반환한다..
+     */
+    public Supplier<? extends RuntimeException> getConstructorWithMessage() {
+        return () -> constructorOfException.apply(message);
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public Function<String, ? extends RuntimeException> getConstructorOfException() {
+        return constructorOfException;
     }
 }
