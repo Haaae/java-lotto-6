@@ -3,7 +3,9 @@ package lotto.exception;
 import java.util.function.Function;
 
 public enum ExceptionCode {
-    EXAMPLE("예외 메세지 예시", IllegalArgumentException::new),
+    INVALID_PURCHASE_PRICE("[ERROR] 잘못된 구매금액입니다.", IllegalArgumentException::new),
+
+
     ;
 
 
