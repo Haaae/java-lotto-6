@@ -9,6 +9,7 @@ public enum Regex {
     CASH_ROUND("#,##0.0"), // .0 -> 소수점 한자리 까지 포함, .00 -> 소수점 두자리 까지 포함 ...
     ROUND("0.0"),
     NUMBER_SPLIT(","),
+    BAR("---"),
 
     ;
 
