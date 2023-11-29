@@ -41,12 +41,4 @@ public enum ExceptionCode {
     public Supplier<? extends RuntimeException> getConstructorWithMessage() {
         return () -> constructorOfException.apply(message);
     }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public Function<String, ? extends RuntimeException> getConstructorOfException() {
-        return constructorOfException;
-    }
 }
