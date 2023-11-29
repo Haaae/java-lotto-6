@@ -21,8 +21,8 @@ public abstract class Repository<T extends Entity> {
                 .orElseThrow(e.getConstructorWithMessage());
     }
 
-    public T save(final T t) {
-        return repository.put(
+    public void save(final T t) {
+        repository.put(
                 t.getId(),
                 t
         );
