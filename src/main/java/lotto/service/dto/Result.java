@@ -6,14 +6,6 @@ public record Result(
         int countOfThird,
         int countOfForth,
         int countOfFifty,
-        long purchasePrice,
-        long totalPrize
+        float revenueRate
 ) {
-    public float getRevenueRate() {
-        if (purchasePrice == 0) {
-            return 0;
-        }
-
-        return (float) totalPrize / purchasePrice * 100;
-    }
 }
