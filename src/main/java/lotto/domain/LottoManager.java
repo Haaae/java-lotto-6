@@ -30,7 +30,7 @@ public class LottoManager {
         );
     }
 
-    private static long getTotalPrize(Map<Rank, Integer> result) {
+    private long getTotalPrize(Map<Rank, Integer> result) {
         return result.keySet()
                 .stream()
                 .mapToLong(rank ->

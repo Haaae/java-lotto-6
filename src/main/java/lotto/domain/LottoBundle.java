@@ -24,7 +24,7 @@ public class LottoBundle {
         return countBoard;
     }
 
-    private static void increaseMatchRankCount(
+    private void increaseMatchRankCount(
             Lotto winningNumbers,
             BonusNumber bonusNumber,
             Lotto lotto,
